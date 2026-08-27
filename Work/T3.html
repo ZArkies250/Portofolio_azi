@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let berat = 70;
+        let tinggi = 1.72;
+        let BMI = berat / (tinggi * tinggi);
+        let status = BMI < 18.5 ? "Kurus" : BMI < 25 ? "Normal" : BMI < 30 ? "Gemuk" : "Obesitas";
+        console.log("BMI: " + BMI);
+        console.log("Status: " + status);
+    </script>
+</body>
+</html>

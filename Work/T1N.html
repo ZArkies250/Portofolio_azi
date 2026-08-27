@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+<body>
+<p id="demo"></p>
+
+<script>
+const product = new Object({
+    Productname: "laptop",
+    productprice: "7500000",
+    productstock: "12",
+    productcategory: "electronics"
+});
+
+document.getElementById("demo").innerHTML = product.Productname + "<br>"+" costs " + product.productprice + "<br>"+ product.productstock + "<br>"+ product.productcategory + " category.";
+</script>
+</head>
+</body>
+</html>

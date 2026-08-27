@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Profile Portfolio</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 31, 48, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-glow: #6366f1;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        a:focus-visible {
+            outline: 3px solid var(--accent-cyan);
+            outline-offset: 4px;
+        }
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 16px;
+            height: 16px;
+            background: #10b981;
+            border: 3px solid var(--bg-color);
+            border-radius: 50%;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-name-group {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-name-group h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .username {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .role-tag {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: #a5b4fc;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .bio {
+            margin-top: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .location {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Section Header Styling */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .section-title i {
+            color: var(--accent-cyan);
+        }
+
+        /* Learning Progress Bar */
+        .progress-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 75%; /* Sesuaikan progress */
+            background: linear-gradient(90deg, var(--accent-glow), var(--accent-cyan));
+            border-radius: 10px;
+        }
+
+        /* Skills Tags */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            align-self: flex-start;
+            text-decoration: none;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* CTA Button / Hall of Creations */
+        .btn-hall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent-cyan));
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-hall:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Responsive Breakpoint Mobile */
+        @media (max-width: 600px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .profile-name-group {
+                justify-content: center;
+            }
+
+            .location {
+                justify-content: center;
+            }
+
+            .container {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Profile Header Section -->
+        <header class="glass-card profile-header">
+            <div class="avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" alt="Foto Profil" class="avatar">
+                <div class="status-badge" title="Active Now"></div>
+            </div>
+            <div class="profile-info">
+                <div class="profile-name-group">
+                    <h1>Z90</h1>
+                    <span class="username">@Z90</span>
+                </div>
+                <span class="role-tag">Full Stack Developer & UI/UX</span>
+                <p class="bio">Fokus membangun aplikasi web interaktif, performa tinggi, dan tampilan intuitif. Senang bereksperimen dengan teknologi modern.</p>
+                <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Jakarta, Indonesia</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Belajar Section -->
+        <section class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-graduation-cap"></i> Progress Kelas Aktif
+            </div>
+            <div class="progress-box">
+                <div class="progress-details">
+                    <span><strong>Fullstack Web Mastery 2026</strong></span>
+                    <span style="color: var(--accent-cyan); font-weight: 600;">75% Selesai</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skill Section -->
+        <section class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-code"></i> Keahlian & Tech Stack
+            </div>
+            <div class="skills-grid">
+                <span class="skill-chip">React.js</span>
+                <span class="skill-chip">TypeScript</span>
+                <span class="skill-chip">Node.js</span>
+                <span class="skill-chip">Next.js</span>
+                <span class="skill-chip">Tailwind CSS</span>
+                <span class="skill-chip">PostgreSQL</span>
+                <span class="skill-chip">Figma</span>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="glass-card">
+            <div class="section-title">
+                <i class="fa-solid fa-rocket"></i> Project Unggulan
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Crypto Tracker Dashboard</h3>
+                        <p>Web dashboard real-time untuk memantau pergerakan pasar kripto dengan chart interaktif.</p>
+                    </div>
+                    <a href="Work/T1.html" class="project-link">Lihat Detail <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>AI Task Manager</h3>
+                        <p>Aplikasi manajemen tugas berbasis kecerdasan buatan untuk otomatisasi prioritas kerja.</p>
+                    </div>
+                    <a href="Work/test2.html" class="project-link">Lihat Detail <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Button / Link Ke Hall of Creations -->
+        <a href="Work/T3.html" class="btn-hall">
+            <i class="fa-solid fa-trophy"></i> Jelajahi Hall of Creations
+        </a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let attack = 80;
+    let defense = 30;
+    let  critical = true;
+    let damage = attack - defense;
+    let finalDamage = critical ? damage * 2 : damage;
+    console.log("attack :", attack);
+    console.log("defense :", defense);
+    console.log("critical :", critical);
+    console.log("damage :", damage);
+    console.log("final damage :", finalDamage);
+    </script>
+</body>
+</html>
